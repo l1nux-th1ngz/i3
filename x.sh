@@ -13,9 +13,6 @@ spinner() {
     done
     echo
 }
-
-sudo apt update && sudo apt upgrade -y
-sudo apt-get --no-install-recommends sddm
 # Install all this
 sudo apt install -y curl
 sudo apt install -y wget
@@ -175,16 +172,26 @@ sudo apt install -y osdlyrics
 sudo apt install -y upower
 sudo apt install -y gparted
 sudo apt install -y gnome-disk-utility
-sudo apt -y install openbox
+Clone
+git clone https://github.com/vaxerski/Hypr
+cd Hypr
+make clear && make release
+Copy
+sudo cp ./build/Hypr /usr/bin
 
+sudo cp ./example/hypr.desktop /usr/share/xsessions
 
-# Get the PID of the last background process
-PID=$!
+# Go Home
+cd ~
 
-# Display the spinner
-spinner $PID
+# Updat dirs
+xdg-user-dirs-update
 
-done
+# Go Home
+sudo apt install lightdm
+sudo systemctl enable lightdm.service
+sudo systemctl start lightdm.service
+
 
 # reboot
 sudo reboot
