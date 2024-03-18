@@ -23,5 +23,10 @@ sudo apt install -y notepadqq
 sudo apt install -y xdg-user-dirs
 sudo apt install -y xdg-user-dirs-gtk
 
+# Enable Greeter
+sudo systemctl enable lightdm.service
+sudo systemctl start lightdm.service
+sleep 3
+
 # Update user dirs
 xdg-user-dirs-update
