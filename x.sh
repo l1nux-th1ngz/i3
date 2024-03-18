@@ -212,4 +212,4 @@ done
 # Wait for Install to complete
 wait
 # Update 
-sudo apt get update && sudo apt upgrade -y
+sudo apt get && sudo apt upgrade -y
