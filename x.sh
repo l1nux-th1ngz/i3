@@ -61,10 +61,7 @@ sudo apt install -y libxcb-xrm0
 sudo apt install -y libxcb-xrm-dev
 sudo apt install -y libxcb-shape0
 sudo apt install -y libxcb-shape0-dev
-sudo apt install -y i3status
-sudo apt install -y i3
 sudo apt install -y dmenu
-sudo apt install -y sxhkd
 sudo apt install -y numlockx
 sudo apt install -y rofi
 sudo apt install -y dunst
@@ -127,10 +124,6 @@ sudo apt install -y terminator
 sudo apt install -y npm
 sudo apt install -y golang-go
 sudo apt install -y mpdris2
-sudo apt install -y i3-wm
-sudo apt install -y i3blocks
-sudo apt install -y i3lock
-sudo apt install -y i3lock-fancy
 sudo apt install -y gvfs
 sudo apt install -y bzip2
 sudo apt install -y thefuck
