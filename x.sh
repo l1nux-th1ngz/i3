@@ -75,13 +75,6 @@ sudo apt install -y notepadqq
 sudo apt install -y simplescreenrecorder
 sudo apt install -y xdg-user-dirs
 sudo apt install -y xdg-user-dirs-gtk
-sudo apt install -y slick-greeter
-sudo systemctl enable bluetooth
-sleep 1
-sudo systemctl enable avahi-daemon
-sleep 1
-sudo systemctl enable acpid
-sleep 1
 sudo apt install -y pipewire
 sudo apt install -y wireplumber
 sudo apt install -y build-essential
@@ -145,12 +138,6 @@ sudo apt install -y autotools-dev
 sudo apt install -y pkg-config
 sudo apt install -y automake
 sudo apt install -y p7zip-full
-sudo apt install -y network-manager
-sudo apt install -y nm-try
-sudo service NetworkManager restart
-sleep 1
-sudo service network-manager restart
-sleep 1
 sudo apt install -y imagemagick 
 sudo apt install -y python3-pip
 sudo apt install -y yad
@@ -160,8 +147,6 @@ sudo apt install -y mintstick
 sudo apt install -y scrot
 sudo apt install -y maim
 sudo apt install -y suckless-tools
-sudo apt install -y  i3status
-sudo apt install -y compton 
 sudo apt install -y hsetroot 
 sudo apt install -y rxvt-unicode
 sudo apt install -y xsel
