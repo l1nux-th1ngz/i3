@@ -178,6 +178,8 @@ sudo apt install -y osdlyrics
 sudo apt install -y upower
 sudo apt install -y gparted
 sudo apt install -y gnome-disk-utility
+sudo apt install -y task-xfce-desktop
+
 # Create directory with appropriate permissions
 sudo install -d -m 0755 /etc/apt/keyrings
 
