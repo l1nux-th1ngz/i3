@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# Function to display a spinner
+spinner() {
+    local pid=$1
+    local i=1
+    local sp="/-\|"
+    echo -n ' '
+    while ps -p $pid > /dev/null
+    do
+        printf "\b${sp:i++%${#sp}:1}"
+        sleep 0.1
+    done
+    echo
+}
+
 sudo apt update && sudo apt upgrade -y
 # Install all this
 sudo apt install -y curl
@@ -164,19 +178,14 @@ sudo apt install -y upower
 sudo apt install -y gparted
 sudo apt install -y gnome-disk-utility
 
-# Wait for Install to complete
-wait
-# Update 
-sudo apt update && sudo apt upgrade -y
-
-sleep 7 &
+# Get the PID of the last background process
 PID=$!
-i=1
-sp="/-\|"
-echo -n ' '
-while [ -d /proc/$PID ]
-do
-  printf "\b${sp:i++%${#sp}:1}"
+
+# Display the spinner
+spinner $PID
+
+# Cleanup
+echo "Cleanup..."tf "\b${sp:i++%${#sp}:1}"
 done
 
 # reboot
