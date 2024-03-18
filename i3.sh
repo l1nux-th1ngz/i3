@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt get update && sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 # Install all this
 sudo apt install -y curl
 sudo apt install -y wget
@@ -80,8 +80,11 @@ sudo apt install -y xdg-user-dirs
 sudo apt install -y xdg-user-dirs-gtk
 sudo apt install -y slick-greeter
 sudo systemctl enable bluetooth
+sleep 1
 sudo systemctl enable avahi-daemon
+sleep 1
 sudo systemctl enable acpid
+sleep 1
 sudo apt install -y pipewire
 sudo apt install -y wireplumber
 sudo apt install -y build-essential
@@ -123,11 +126,38 @@ sudo apt install -y libgtk-3-dev
 sudo apt install -y terminator
 sudo apt install -y npm
 sudo apt install -y golang-go
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --profile complete --default-toolchain stable
+sudo apt install -y mpdris2
+sudo apt install -y i3-wm
+sudo apt install -y i3blocks
+sudo apt install -y i3lock
+sudo apt install -y i3lock-fancy
+sudo apt install -y gvfs
+sudo apt install -y bzip2
+sudo apt install -y thefuck
+sudo apt install -y cpio
+sudo apt install -y fakeroot
+sudo apt install -y gzip
+sudo apt install -y lz4
+sudo apt install -y lshw
+sudo apt install -y ucf
+sudo apt install -y whiptale
+sudo apt install -y xdg-utils
+sudo apt install -y xz-utils
+sudo apt install -y zstd
+sudo apt install -y qt5-style-kvantum-themes
+sudo apt install -y qt5-style-kvantum-l10n
+sudo apt install -y autoconf
+sudo apt install -y autoconf-archive
+sudo apt install -y autotools-dev
+sudo apt install -y pkg-config
+sudo apt install -y automake
+sudo apt install -y p7zip-full
 sudo apt install -y network-manager
 sudo apt install -y nm-try
 sudo service NetworkManager restart
+sleep 1
 sudo service network-manager restart
+sleep 1
 sudo apt install -y imagemagick 
 sudo apt install -y python3-pip
 sudo apt install -y yad
@@ -155,5 +185,38 @@ sudo apt install -y osdlyrics
 sudo apt install -y upower
 sudo apt install -y gparted
 sudo apt install -y gnome-disk-utility
+# Create directory with appropriate permissions
+sudo install -d -m 0755 /etc/apt/keyrings
+
+# Import repository signing key
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+
+# Verify fingerprint
+gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") print "\nThe key fingerprint matches ("$0").\n"; else print "\nVerification failed: the fingerprint ("$0") does not match the expected one.\n"}'
+
+# Add repository
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+
+# Configure package pinning
+echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla
+
+# Update package lists and install Firefox
+sudo apt-get update && sudo apt-get install firefox
+
+sleep 7 &
+PID=$!
+i=1
+sp="/-\|"
+echo -n ' '
+while [ -d /proc/$PID ]
+do
+  printf "\b${sp:i++%${#sp}:1}"
+done
+# Wait for Install to complete
+wait
 # Update 
 sudo apt get update && sudo apt upgrade -y
