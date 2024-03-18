@@ -15,6 +15,7 @@ spinner() {
 }
 
 sudo apt update && sudo apt upgrade -y
+sudo apt-get --no-install-recommends sddm
 # Install all this
 sudo apt install -y curl
 sudo apt install -y wget
@@ -38,9 +39,7 @@ sudo apt install -y mtools
 sudo apt install -y dosfstools
 sudo apt install -y font-manager-common
 sudo apt install -y font-manager
-sudo apt install -y avahi-daemon
-sudo apt install -y acpi
-sudo apt install -y acpid
+sudo apt install -y gvfs
 sudo apt install -y gvfs-backends
 sudo apt install -y kitty
 sudo apt install -y pulseaudio
@@ -75,7 +74,6 @@ sudo apt install -y libxcb-xrm0
 sudo apt install -y libxcb-xrm-dev
 sudo apt install -y libxcb-shape0
 sudo apt install -y libxcb-shape0-dev
-sudo apt install -y dmenu
 sudo apt install -y numlockx
 sudo apt install -y rofi
 sudo apt install -y dunst
@@ -177,6 +175,8 @@ sudo apt install -y osdlyrics
 sudo apt install -y upower
 sudo apt install -y gparted
 sudo apt install -y gnome-disk-utility
+sudo apt -y install openbox
+
 
 # Get the PID of the last background process
 PID=$!
@@ -184,8 +184,6 @@ PID=$!
 # Display the spinner
 spinner $PID
 
-# Cleanup
-echo "Cleanup..."tf "\b${sp:i++%${#sp}:1}"
 done
 
 # reboot
