@@ -45,7 +45,7 @@ sudo apt install -y pavucontrol
 sudo apt install -y gdebi
 sudo apt install -y synaptic
 sudo apt install -y volumeicon-alsa
-sudo apt install -y neoftech
+sudo apt install -y neofetch
 sudo apt install -y nala 
 sudo apt install -y bluez
 sudo apt install -y blueman
